@@ -1,22 +1,14 @@
 var path = require('path')
 var webpack = require('webpack')
 
-module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+var build = {
   entry: [
-    'webpack-hot-middleware/client',
     './src/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
   },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
   module: {
     loaders: [
       {
@@ -31,4 +23,25 @@ module.exports = {
       }
     ]
   }
+}
+
+if (process.env.NODE_ENV === 'production') {
+  build.stats = {
+    assets: false,
+    warnings: false
+  };
+  build.plugins = [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.NoErrorsPlugin()
+  ];
+  module.exports = build
+} else {
+  build.devtool = 'cheap-module-eval-source-map';
+  build.plugins = [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ];
+  build.entry.push('webpack-hot-middleware/client');
+  module.exports = build
 }

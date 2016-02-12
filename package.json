@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "Redux Boilerplate",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "NODE_ENV=production webpack -p  --optimize-dedupe"
   },
   "repository": {
     "type": "git",

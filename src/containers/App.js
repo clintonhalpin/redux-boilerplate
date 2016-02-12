@@ -4,7 +4,6 @@ import { push } from 'react-router-redux'
 
 class App extends Component {
   render() {
-    console.log(this.props)
     const { children, page } = this.props
     return (
       <div>
@@ -18,12 +17,6 @@ class App extends Component {
     )
   }
 }
-
-// App.propTypes = {
-//   push: PropTypes.func.isRequired,
-//   page: PropTypes.string.isRequired,
-//   children: PropTypes.node
-// }
 
 const mapStateToProps = (
   state

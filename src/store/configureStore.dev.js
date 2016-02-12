@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { syncHistory } from 'react-router-redux'
 import { browserHistory } from 'react-router'
-import DevTools from '../containers/DevTools'
+import DevTools from '../containers/DevTools/'
 import thunk from 'redux-thunk'
 import api from '../middleware/api'
 import createLogger from 'redux-logger'
@@ -14,7 +14,8 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(thunk, api, reduxRouterMiddleware, createLogger()),
+      // applyMiddleware(thunk, api, reduxRouterMiddleware, createLogger()),
+      applyMiddleware(thunk, api, reduxRouterMiddleware),
       DevTools.instrument()
     )
   )
