@@ -49,6 +49,7 @@ class UserPage extends Component {
     const { starredRepos, starredRepoOwners, starredPagination } = this.props
     return (
       <div>
+        User Page
         <List renderItem={this.renderRepo}
               items={zip(starredRepos, starredRepoOwners)}
               onLoadMoreClick={this.handleLoadMoreClick}

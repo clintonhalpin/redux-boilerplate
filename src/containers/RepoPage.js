@@ -40,6 +40,7 @@ class RepoPage extends Component {
     const { stargazers, stargazersPagination } = this.props
     return (
       <div>
+        Repo Page
         <Repo repo={repo}
                     owner={owner} />
         <hr />
