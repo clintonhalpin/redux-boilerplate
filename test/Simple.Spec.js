@@ -5,16 +5,11 @@ import TestUtils from 'react-addons-test-utils'
 import Simple from './../src/components/Simple'
 
 function setup() {
-  let props = {
-    addTodo: expect.createSpy()
-  }
-
   let renderer = TestUtils.createRenderer()
-  renderer.render(<Simple {...props} />)
+  renderer.render(<Simple />)
   let output = renderer.getRenderOutput()
 
   return {
-    props,
     output,
     renderer
   }
