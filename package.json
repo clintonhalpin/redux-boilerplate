@@ -4,7 +4,9 @@
   "description": "Redux Boilerplate",
   "scripts": {
     "start": "node server.js",
-    "build": "NODE_ENV=production webpack -p  --optimize-dedupe"
+    "build": "NODE_ENV=production webpack -p  --optimize-dedupe",
+    "test": "mocha --compilers js:babel-core/register --recursive --require ./test/setup.js",
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -16,6 +18,7 @@
   },
   "homepage": "https://github.com/clintonhalpin/redux-boilerplate/",
   "dependencies": {
+    "babel": "^6.5.2",
     "babel-core": "^6.3.15",
     "babel-loader": "^6.2.0",
     "babel-polyfill": "^6.3.14",
@@ -26,12 +29,14 @@
     "basscss": "^7.1.1",
     "concurrently": "^0.1.1",
     "css-loader": "^0.23.1",
+    "expect": "^1.14.0",
     "express": "^4.13.3",
     "humps": "^0.6.0",
     "isomorphic-fetch": "^2.1.1",
     "less": "^2.6.0",
     "less-loader": "^2.2.2",
     "lodash": "^4.0.0",
+    "nock": "^7.0.2",
     "normalizr": "^2.0.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
@@ -43,10 +48,16 @@
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.3",
     "redux-logger": "^2.4.0",
+    "redux-mock-store": "0.0.6",
     "redux-thunk": "^1.0.3",
     "style-loader": "^0.13.0",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.2.0"
+  },
+  "devDependencies": {
+    "jsdom": "^8.0.2",
+    "mocha": "^2.4.5",
+    "react-addons-test-utils": "^0.14.7"
   }
 }
