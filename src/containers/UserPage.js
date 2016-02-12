@@ -3,19 +3,17 @@ import { connect } from 'react-redux'
 import { loadUser, loadStarred } from '../actions'
 import Repo from '../components/Repo'
 import List from '../components/List'
-import zip from 'lodash/zip'
+import zip from 'lodash/zip';
+import { Link } from 'react-router';
 
 function loadData(props) {
   const { login } = props
   props.loadUser(login, [ 'name' ])
-  props.loadStarred(login)
 }
 
 class UserPage extends Component {
   constructor(props) {
     super(props)
-    this.renderRepo = this.renderRepo.bind(this)
-    this.handleLoadMoreClick = this.handleLoadMoreClick.bind(this)
   }
 
   componentWillMount() {
@@ -28,33 +26,26 @@ class UserPage extends Component {
     }
   }
 
-  handleLoadMoreClick() {
-    this.props.loadStarred(this.props.login, true)
-  }
-
-  renderRepo([ repo, owner ]) {
-    return (
-      <Repo repo={repo}
-            owner={owner}
-            key={repo.fullName} />
-    )
-  }
-
   render() {
+    console.log(this.props)
     const { user, login } = this.props
-    if (!user) {
-      return <h1><i>Loading {login}’s profile...</i></h1>
-    }
-
-    const { starredRepos, starredRepoOwners, starredPagination } = this.props
+    
     return (
       <div>
-        User Page
-        <List renderItem={this.renderRepo}
-              items={zip(starredRepos, starredRepoOwners)}
-              onLoadMoreClick={this.handleLoadMoreClick}
-              loadingLabel={`Loading ${login}’s starred...`}
-              {...starredPagination} />
+        <div className="container clearfix">
+            <div className="mx-auto py4" style={{ maxWidth: '32rem' }}>
+              {!user && 
+                <h1><i>Loading {login}’s profile...</i></h1>
+              }
+              {user && 
+                <div className="center">
+                  <img src={ user.avatarUrl } alt={ user.username } className="circle" style={{ 'width' : 80 }} />
+                  <h1>{user.name}</h1>
+                  <p style={{ 'wordBreak': 'break-all' }}>{ JSON.stringify(user) }</p>
+                </div>
+              }
+            </div>
+          </div> 
       </div>
     )
   }
@@ -62,30 +53,17 @@ class UserPage extends Component {
 
 UserPage.propTypes = {
   login: PropTypes.string.isRequired,
-  user: PropTypes.object,
-  starredPagination: PropTypes.object,
-  starredRepos: PropTypes.array.isRequired,
-  starredRepoOwners: PropTypes.array.isRequired,
   loadUser: PropTypes.func.isRequired,
-  loadStarred: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state, props) {
   const { login } = props.params
   const {
-    pagination: { starredByUser },
     entities: { users, repos }
   } = state
 
-  const starredPagination = starredByUser[login] || { ids: [] }
-  const starredRepos = starredPagination.ids.map(id => repos[id])
-  const starredRepoOwners = starredRepos.map(repo => users[repo.owner])
-
   return {
     login,
-    starredRepos,
-    starredRepoOwners,
-    starredPagination,
     user: users[login]
   }
 }

@@ -32,7 +32,10 @@ if (process.env.NODE_ENV === 'production') {
   };
   build.plugins = [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': '"production"'
+    }),
   ];
   module.exports = build
 } else {
