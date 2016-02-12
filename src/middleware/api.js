@@ -53,7 +53,7 @@ export const Schemas = {
   REPO_ARRAY: arrayOf(repoSchema)
 }
 
-export const CALL_API = Symbol('Call API')
+export const CALL_API = Symbol('Call API');
 
 export default store => next => action => {
   const callAPI = action[CALL_API]

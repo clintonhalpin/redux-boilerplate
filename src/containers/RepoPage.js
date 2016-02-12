@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { loadRepo, loadStargazers } from '../actions'
-import Repo from '../components/Repo'
-import List from '../components/List'
+import { List, Repo } from './../components/'
 
 function loadData(props) {
   const { fullName } = props
