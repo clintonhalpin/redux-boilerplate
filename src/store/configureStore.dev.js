@@ -14,7 +14,7 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(thunk, api, reduxRouterMiddleware, createLogger()),
+      applyMiddleware(thunk, api, reduxRouterMiddleware, createLogger({ collapsed: true })),
       DevTools.instrument()
     )
   )

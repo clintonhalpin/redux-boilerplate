@@ -3,6 +3,7 @@ import { fetchUserIfNeeded } from './../actions/';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import User from './../components/User';
+import Header from './../components/Header';
 
 class UserPage extends Component {
   constructor(props) {
@@ -20,8 +21,11 @@ class UserPage extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div className="col col-12">
-        <User user={user} />
+      <div>
+        <Header title="Back" />
+        <div className="col col-12 p2">
+          <User user={user} />
+        </div>
       </div>
     )
   }
