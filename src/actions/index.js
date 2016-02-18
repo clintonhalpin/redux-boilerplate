@@ -23,3 +23,31 @@ export function fetchUserIfNeeded(username) {
     return dispatch(fetchUser(username));
   }
 }
+
+// EMOJI
+
+export const EMOJI_REQUEST = 'EMOJI_REQUEST';
+export const EMOJI_SUCCESS = 'EMOJI_SUCCESS';
+export const EMOJI_FAILURE = 'EMOJI_FAILURE';
+
+function recieveEmoji(json) {
+  return {
+    type: EMOJI_SUCCESS,
+    data: json,
+    receivedAt: Date.now()
+  }
+}
+
+function fetchEmoji() {
+  return dispatch => {
+    return fetch(`https://api.github.com/emojis`)
+      .then(response => response.json())
+      .then(json => dispatch(recieveEmoji(json)))
+  }
+}
+
+export function fetchEmojiIfNeeded() {
+  return (dispatch, getState) => {
+    return dispatch(fetchEmoji());
+  }
+}

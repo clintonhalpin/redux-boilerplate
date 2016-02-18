@@ -14,6 +14,10 @@ class IndexPage extends Component {
                 <li><Link to="/clintonhalpin">Clinton Halpin</Link></li>
                 <li><Link to="/iamnickvolpe">Nick Volpe</Link></li>
               </ul>
+              <p>View all emojis on github</p>
+              <ul>
+                <li><Link to="/emoji">View all</Link></li>
+              </ul>
           </div>
         </div>
     )
