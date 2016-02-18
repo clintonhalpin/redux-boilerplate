@@ -1,9 +1,3 @@
-import List from './List';
-import Repo from './Repo';
-import Search from './Search';
+import User from './User';
 
-export default {
-    List,
-    Repo,
-    Search
-}
+export default User

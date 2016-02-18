@@ -12,13 +12,13 @@ class App extends Component {
           <p className="m0"><Link to="/" className="white">Github Users</Link></p>
         </div>
         { !children && 
-          <div className="container p2 py4">
+          <div className="container clearfix p2 py4">
             <div className="col col-12">
               <Link to="/clintonhalpin">Clinton Halpin</Link>
             </div> 
           </div> 
         }
-        <div className="p2">
+        <div className="col col-12 p2">
           {children}
         </div>
       </div>
