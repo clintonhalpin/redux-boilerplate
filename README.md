@@ -17,4 +17,5 @@ npm run start
 | `test:watch`  | run unit tests with watch |
 | `clean`  | remove dist |
 
+=
 built by [@clintonhalpin](http://twitter.com/clintonhalpin)
