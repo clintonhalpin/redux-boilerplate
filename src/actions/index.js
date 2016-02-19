@@ -42,7 +42,7 @@ function recieveEmoji(json) {
 
 function fetchEmoji() {
   return dispatch => {
-    return fetch(`https://api.github.com/emojis`)
+    return api.fetchEmojis() 
       .then(response => response.json())
       .then(json => dispatch(recieveEmoji(json)))
   }
