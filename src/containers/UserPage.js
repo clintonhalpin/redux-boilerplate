@@ -15,9 +15,6 @@ class UserPage extends Component {
     dispatch(fetchUserIfNeeded(username));
   }
 
-  componentWillReceiveProps(nextProps) {
-  }
-
   render() {
     const { user } = this.props;
     return (
