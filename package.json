@@ -6,7 +6,8 @@
     "start": "node server.js",
     "build": "NODE_ENV=production webpack -p  --optimize-dedupe",
     "test": "NODE_ENV=production mocha --compilers js:babel-core/register --recursive --require ./test/setup.js",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
