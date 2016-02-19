@@ -9,10 +9,11 @@ class IndexPage extends Component {
         <div>
           <Header title="Redux Boilerplate" />
           <div className="col col-12 p2">
-              <p>View some great github profiles</p>
+              <p>My fav frontend peeps</p>
               <ul>
                 <li><Link to="/clintonhalpin">Clinton Halpin</Link></li>
                 <li><Link to="/iamnickvolpe">Nick Volpe</Link></li>
+                <li><Link to="/chrisnager">Chris Nager</Link></li>
               </ul>
               <p>View all emojis on github</p>
               <ul>
