@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
   user,
   emojis,
   routing: routeReducer
-})
-
+});
 
 export default rootReducer
