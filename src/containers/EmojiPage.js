@@ -21,7 +21,7 @@ class EmojiPage extends Component {
       <div>
         <Header title="Back" />
         <div className="col col-12 p2">
-         <h1>All of the emojis available on Github</h1>
+         <h1 className="m0">All of the emojis available on Github</h1>
          { emojis && this.renderEmojis() }
         </div>
       </div>
