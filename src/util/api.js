@@ -1,11 +1,13 @@
 import fetch from 'isomorphic-fetch';
 
+const API_BASE = 'https://api.github.com';
+
 const fetchUser = (username) => {
-    return fetch(`https://api.github.com/users/${username}`);
+    return fetch(`${API_BASE}/users/${username}`);
 }
 
 const fetchEmojis = () => {
-    return fetch(`https://api.github.com/emojis`);
+    return fetch(`${API_BASE}/emojis`);
 }
 
 export default {
