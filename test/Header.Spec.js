@@ -6,7 +6,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import Header from './../src/components/Header';
 
-function setup(props) {
+function setup() {
   let renderer = TestUtils.createRenderer()
   renderer.render(<Header />)
   let output = renderer.getRenderOutput()
@@ -22,7 +22,7 @@ describe('components', () => {
     it('should render', () => {
       const { output } = setup();
       expect(output.type).toBe('div');
-    })
+    });
     it('should dynamically set a title', () => {
       let renderer = TestUtils.createRenderer()
       renderer.render(<Header title='Fun' />)
