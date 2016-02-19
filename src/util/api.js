@@ -1,3 +1,9 @@
 import fetch from 'isomorphic-fetch';
 
-export default const fetchUser = (username) => fetch(`https://api.github.com/users/${username}`);
+const fetchUser = (username) => {
+    return fetch(`https://api.github.com/users/${username}`);
+}
+
+export default {
+    fetchUser
+}

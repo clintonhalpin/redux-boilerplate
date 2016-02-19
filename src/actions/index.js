@@ -1,3 +1,5 @@
+import api from './../util/api';
+
 export const USER_REQUEST = 'USER_REQUEST';
 export const USER_SUCCESS = 'USER_SUCCESS';
 export const USER_FAILURE = 'USER_FAILURE';
@@ -12,7 +14,7 @@ function recieveUser(json) {
 
 function fetchUser(username) {
   return dispatch => {
-    return fetch(`https://api.github.com/users/${username}`)
+    return api.fetchUser(username) 
       .then(response => response.json())
       .then(json => dispatch(recieveUser(json)))
   }
