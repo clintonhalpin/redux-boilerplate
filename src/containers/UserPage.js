@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { fetchUserIfNeeded } from './../actions/';
+import * as actionTypes from './../actions/';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import User from './../components/User';
@@ -12,7 +12,7 @@ class UserPage extends Component {
 
   componentWillMount() {
     const { dispatch, username } = this.props;
-    dispatch(fetchUserIfNeeded(username));
+    dispatch(actionTypes.default.fetchUserIfNeeded(username));
   }
 
   render() {
@@ -21,7 +21,8 @@ class UserPage extends Component {
       <div>
         <Header title="Back" />
         <div className="col col-12 p2">
-          <User user={user} />
+          { !user.data && <h1 className="center">Loading...</h1> }
+          { user.data && <User user={user.data} /> }
         </div>
       </div>
     )

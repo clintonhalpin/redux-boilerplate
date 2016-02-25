@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { fetchEmojiIfNeeded } from './../actions/';
+import * as actionTypes from './../actions/';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import User from './../components/User';
 import Header from './../components/Header';
-
 class EmojiPage extends Component {
   constructor(props) {
     super(props)
@@ -12,7 +11,7 @@ class EmojiPage extends Component {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchEmojiIfNeeded());
+    dispatch(actionTypes.default.fetchEmojiIfNeeded());
   }
 
   render() {
