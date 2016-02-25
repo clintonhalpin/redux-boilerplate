@@ -19,6 +19,10 @@ class IndexPage extends Component {
               <ul>
                 <li><Link to="/emoji">View all</Link></li>
               </ul>
+              <p>Github flavored markdown</p>
+              <ul>
+                <li><Link to="/markdown">View POST Example</Link></li>
+              </ul>
           </div>
         </div>
     )
