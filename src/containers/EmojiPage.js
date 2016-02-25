@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import User from './../components/User';
 import Header from './../components/Header';
+
 class EmojiPage extends Component {
   constructor(props) {
     super(props)
@@ -20,8 +21,8 @@ class EmojiPage extends Component {
       <div>
         <Header title="Back" />
         <div className="col col-12 p2">
-         <h1 className="m0">All of the emojis available on Github</h1>
-         { emojis && this.renderEmojis() }
+         { emojis.data && this.renderEmojis() }
+         { !emojis.data && <h1 className="center">Loading...</h1> }
         </div>
       </div>
     )
@@ -31,9 +32,9 @@ class EmojiPage extends Component {
     const { emojis } = this.props;
     return(
       <ul className="list-reset">
-        { Object.keys(emojis).map((item, idx)=>{
+        { Object.keys(emojis.data).map((item, idx)=>{
           return(
-            <li className="align-middle inline-block" key={idx}><span><img src={emojis[item]} className="align-middle p2" />{item}</span></li>
+            <li className="align-middle inline-block" key={idx}><span><img src={emojis.data[item]} className="align-middle p2" />{item}</span></li>
           )
         })}
       </ul>

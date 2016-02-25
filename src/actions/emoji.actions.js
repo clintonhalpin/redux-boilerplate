@@ -14,8 +14,15 @@ function recieveEmoji(json) {
   }
 }
 
+function requestEmoji() {
+  return {
+    type: EMOJI_REQUEST
+  }
+}
+
 function fetchEmoji() {
   return dispatch => {
+    dispatch(requestEmoji())
     return api.fetchEmojis() 
       .then(response => response.json())
       .then(json => dispatch(recieveEmoji(json)))

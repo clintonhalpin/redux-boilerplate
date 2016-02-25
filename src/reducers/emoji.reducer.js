@@ -9,7 +9,7 @@ export default function emojis(state = {}, action) {
     case actionTypes.default.EMOJI_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        ...action.data
+        data: {...action.data}
       })
     default:
       return state
