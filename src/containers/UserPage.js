@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import * as actionTypes from './../actions/';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import User from './../components/User';
 import Header from './../components/Header';
@@ -11,8 +12,8 @@ class UserPage extends Component {
   }
 
   componentWillMount() {
-    const { dispatch, username } = this.props;
-    dispatch(actionTypes.default.fetchUserIfNeeded(username));
+    const { actions, username } = this.props;
+    actions.fetchUserIfNeeded(username);
   }
 
   render() {
@@ -37,6 +38,13 @@ function mapStateToProps(state, props) {
   }
 }
 
+function mapDispatchToProps(dispatch, props) {
+  return {
+    actions: bindActionCreators(actionTypes.default, dispatch)
+  }
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps, mapDispatchToProps
 )(UserPage);
+
