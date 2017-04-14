@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import * as actionTypes from './../actions/';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import Header from './../components/Header';
 
@@ -33,8 +34,8 @@ class MarkdownPage extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { dispatch } = this.props;
-    dispatch(actionTypes.default.postMarkdown(this.refs.markdown.value));
+    const { actions } = this.props;
+    actions.postMarkdown(this.refs.markdown.value);
   }
 }
 
@@ -45,6 +46,12 @@ function mapStateToProps(state, props) {
   }
 }
 
+function mapDispatchToProps(dispatch, props) {
+  return {
+    actions: bindActionCreators(actionTypes.default, dispatch)
+  }
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps, mapDispatchToProps
 )(MarkdownPage);
